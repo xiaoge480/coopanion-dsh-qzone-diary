@@ -96,6 +96,30 @@ jobs/               # 每次发布用的 job.json
 插件加载时会自己体检：缺 Ego 就在日志里留一行带地址的提醒，`qzone_diary_status` 也会把
 `reminders` 一起返回，直接转给用户即可。
 
+### 配合 Coopanion 时的额外依赖（可选）
+
+如果你想让**日记由 Coopanion 里的角色主导** —— 她决定写什么、配什么图、评论怎么回，
+DSH 只当手脚 —— 除了上面三项，还需要在 Coopanion 侧装两个东西：
+
+| 组件 | 装在哪 | 本机验证过的版本 | 地址 |
+|---|---|---|---|
+| **大肥鱼功能复合包** | Coopanion 扩展 | 0.6.17 | [blacksunshy/coopanion-fatfish](https://github.com/blacksunshy/coopanion-fatfish) |
+| **Cortico（本体 + QQ 通道）** | Coopanion 本体 | QQ world 0.2.11 | [Pal-AI-Lab/Cortico](https://github.com/Pal-AI-Lab/Cortico) |
+| **DSH 侧桥接** `coopanion-connector-dsh` | DSH 插件 | v0.2.17 | [blacksunshy/coopanion-connector-dsh](https://github.com/blacksunshy/coopanion-connector-dsh) |
+
+> ⚠ **装 ≠ 配。** 三方都装上只是前提，还要做三件事才能真正通：
+>
+> 1. Coopanion 里**打开桥接开关**，地址填 DSH 的 `ws://127.0.0.1:<port>/coopanion/pet`
+> 2. Coopanion 里 **QQ 通道连上**（OneBot 服务端，本机验证时是 `ws://127.0.0.1:3001`）
+> 3. **告诉 Coopanion 里的角色**「有该交给 DSH 的事就传过去」—— 这条最难自动化，
+>    因为它属于角色行为，不是配置项
+>
+> 版本对不上时的典型表现：桥接连上了但收不到消息，或者收到的消息缺字段。
+> 这时把两边的版本号一起告诉你的 DSH，让它帮你对一下接口再改 —— 比盲试快得多。
+
+**不用 Coopanion 也完全能用**：没有上游角色时本插件自己写正文（见技能文档第 2 节），
+只是日记的口气会变成 DSH 自己的，不再是「她在写」。
+
 ## 配图准备（可选，但想要好看的日记就得做）
 
 日记的配图**不是这个插件生成的**——`qzone_diary_post` 只接收一个本地图片路径，
