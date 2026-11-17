@@ -1,4 +1,4 @@
-# dsh-qzone-diary —— 给 DSH 用的 QQ 空间日记发布器
+# dsh-qzone-diary —— 借助 DSH 给 Coopanion大肥鱼 用的 QQ 空间日记发布器
 
 给 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（DSH）的宿主插件：把「每天
 20:30 在 QQ 空间发一篇带图日记」这件事，连评论检查一起，做成装完就能跑的一套东西。
