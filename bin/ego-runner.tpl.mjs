@@ -150,8 +150,7 @@ async function main() {
   // fill 对 contenteditable 不保留连续换行：段与段之间的空行会被吞成一个。
   // 改为按空行切段，段之间补两次真 Enter（2026-11-17 修复，来源 qzone-poster）。
   {
-    const paras = String(CONFIG.text).split(/
-{2,}/);
+    const paras = String(CONFIG.text).split(/\n{2,}/);
     await page.click(editorSel);
     for (let i = 0; i < paras.length; i += 1) {
       if (i > 0) {
