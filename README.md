@@ -107,6 +107,18 @@ DSH 只当手脚 —— 除了上面三项，还需要在 Coopanion 侧装两个
 | **Cortico（本体 + QQ 通道）** | Coopanion 本体 | QQ world 0.2.11 | [Pal-AI-Lab/Cortico](https://github.com/Pal-AI-Lab/Cortico) |
 | **DSH 侧桥接** `coopanion-connector-dsh` | DSH 插件 | v0.2.17 | [blacksunshy/coopanion-connector-dsh](https://github.com/blacksunshy/coopanion-connector-dsh) |
 
+
+**推荐再加装 `cortico-world-ego`**（[biliye/cortico-world-ego](https://github.com/biliye/cortico-world-ego)）：
+它让 Coopanion 通过 `ego-browser` CLI 操作同一个 Ego Lite，于是 **Ego 由 Coopanion 常驻管着**，
+本插件直接连现成的实例，不用自己拉起浏览器。
+
+> 两者共用同一个 Ego 和同一份登录态。**唯一要留意的是 Space 名不要撞**：
+> 本插件的发布器默认用 `qzone-auto-post`；如果这个空间名已经被占用（报
+> `taskSpace ... already exists`），用环境变量换一个：
+>
+> ```bash
+> QZONE_SPACE="qzone-post-$(date +%Y%m%d)" node qzone-post.mjs --job jobs/xxx.json
+> ```
 > ⚠ **装 ≠ 配。** 三方都装上只是前提，还要做三件事才能真正通：
 >
 > 1. Coopanion 里**打开桥接开关**，地址填 DSH 的 `ws://127.0.0.1:<port>/coopanion/pet`
