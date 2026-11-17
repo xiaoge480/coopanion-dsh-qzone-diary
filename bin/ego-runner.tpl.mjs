@@ -147,7 +147,20 @@ async function main() {
   await sleep(300);
 
   stage = "fill";
-  await page.fill(editorSel, CONFIG.text);
+  // fill 对 contenteditable 不保留连续换行：段与段之间的空行会被吞成一个。
+  // 改为按空行切段，段之间补两次真 Enter（2026-11-17 修复，来源 qzone-poster）。
+  {
+    const paras = String(CONFIG.text).split(/
+{2,}/);
+    await page.click(editorSel);
+    for (let i = 0; i < paras.length; i += 1) {
+      if (i > 0) {
+        await page.keyboard.press("Enter");
+        await page.keyboard.press("Enter");
+      }
+      if (paras[i]) await page.keyboard.type(paras[i], { delay: 6 });
+    }
+  }
   const filled = await waitFor(async () => {
     const text = await page.evaluate((selector) => document.querySelector(selector)?.innerText || "", editorSel);
     return norm(text).includes(target);
