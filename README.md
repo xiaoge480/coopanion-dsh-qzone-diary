@@ -265,6 +265,12 @@ notepad %USERPROFILE%\.dsh\qzone-diary\config.json
   不收集、不上传任何个人信息。
 - 日志里可能含有说说正文摘要，发布成功后建议定期清理 `logs/posts.jsonl`。
 
+## 开发说明
+
+本项目的代码由 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（DSH）编写，
+需求、方向、测试与发布由仓库维护者负责。测试方式、踩过的坑、以及每条设计取舍都写在
+README 和技能文档里 —— 后续维护照着这些记录走即可。
+
 ## License
 
 MIT
