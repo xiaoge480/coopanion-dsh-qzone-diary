@@ -277,6 +277,17 @@ notepad %USERPROFILE%\.dsh\qzone-diary\config.json
   不收集、不上传任何个人信息。
 - 日志里可能含有说说正文摘要，发布成功后建议定期清理 `logs/posts.jsonl`。
 
+
+
+### 已适配的宿主版本
+
+- **验证通过**：DSH `0.2.1-rc.2`（cordis 4.0.5）
+- 插件只依赖 cordis 核心 API（`ctx.inject` / `ctx.effect` / `ctx.on`）和 DSH 的
+  `tools`、`systemPrompt` 两个服务；`package.json` 里已声明 `peerDependencies`，
+  装到不兼容的 cordis 大版本上会直接报版本冲突，而不是装上后静默失效。
+- **如果你在更新的 DSH 上装它、跑不起来**：把你两边的版本号一起说给本机的 DSH，
+  让它对一下接口再改 —— 通常只需要改工具注册那几行，改动很小。
+
 ## 开发说明
 
 本项目的代码由 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（DSH）编写，

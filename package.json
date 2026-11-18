@@ -1,15 +1,9 @@
 {
   "name": "dsh-qzone-diary",
   "version": "1.0.0",
-  "private": false,
-  "type": "module",
   "description": "给 DeepSeek Harness 用的 QQ 空间日记发布器：定时把日记连同一张配图发到 QQ 空间说说，并定时检查评论（只汇报不代回）。自带 qzone-post CLI、评论扫描脚本与技能文档。",
+  "type": "module",
   "main": "lib/index.js",
-  "exports": {
-    ".": "./lib/index.js",
-    "./package.json": "./package.json",
-    "./cordis.patch.yml": "./cordis.patch.yml"
-  },
   "files": [
     "lib",
     "bin",
@@ -17,9 +11,6 @@
     "cordis.patch.yml",
     "README.md"
   ],
-  "engines": {
-    "node": ">=20"
-  },
   "keywords": [
     "dsh",
     "dsh-plugin",
@@ -30,14 +21,7 @@
     "ego-browser"
   ],
   "license": "MIT",
-  "dsh": {
-    "bundle": {
-      "patch": "./cordis.patch.yml"
-    }
-  },
-  "scripts": {
-    "test": "node tests/smoke.mjs"
-  },
+  "author": "xiaoge480",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xiaoge480/dsh-qzone-diary.git"
@@ -46,5 +30,24 @@
   "bugs": {
     "url": "https://github.com/xiaoge480/dsh-qzone-diary/issues"
   },
-  "author": "xiaoge480"
+  "engines": {
+    "node": ">=20"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=4.0.1"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "private": false,
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml"
+  },
+  "scripts": {
+    "test": "node tests/smoke.mjs"
+  }
 }
