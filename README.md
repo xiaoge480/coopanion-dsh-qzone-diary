@@ -139,15 +139,44 @@ jobs/               # 每次发布用的 job.json
 > ```bash
 > QZONE_SPACE="qzone-post-$(date +%Y%m%d)" node qzone-post.mjs --job jobs/xxx.json
 > ```
-> ⚠ **装 ≠ 配。** 三方都装上只是前提，还要做三件事才能真正通：
+> ⚠ **装 ≠ 配。** 三方都装上只是前提，还要做四件事才能真正通：
 >
 > 1. Coopanion 里**打开桥接开关**，地址填 DSH 的 `ws://127.0.0.1:<port>/coopanion/pet`
 > 2. Coopanion 里 **QQ 通道连上**（OneBot 服务端，本机验证时是 `ws://127.0.0.1:3001`）
 > 3. **告诉 Coopanion 里的大肥鱼**「有该交给 DSH 的事就传过去」—— 这条最难自动化，
 >    因为它属于角色行为，不是配置项
+> 4. **配一次工作区路径**（见下面「她写的正文在哪」），免得每次都要她重复报路径
 >
 > 版本对不上时的典型表现：桥接连上了但收不到消息，或者收到的消息缺字段。
 > 这时把两边的版本号一起告诉你的 DSH，让它帮你对一下接口再改 —— 比盲试快得多。
+
+### 她写的正文在哪：配一次就行
+
+Coopanion 模式下，**日记正文是她写的 `.md` 文件**，放在她自己的工作区里
+（`.../data/home/companion/workspace`，和 `notes/` 同级）。
+
+配一次工作区路径，DSH 就记住了：
+
+```
+qzone_diary_config({ coopanion_workspace: "<她的工作区绝对路径>" })
+```
+
+**配置项**
+
+| 字段 | 默认 | 说明 |
+|---|---|---|
+| `coopanion.workspace` | 空 | 她的工作区目录。留空 = 每次由她在任务里给路径 |
+| `coopanion.diaryNameFormat` | `qzone-diary-{yyyymmdd}.md` | 正文文件名模式 |
+
+**配上之后会怎样**
+
+- 到点提醒时，`diaryPrompt` 会先写清**今天那篇应该在哪**，让 DSH 先去找
+- `qzone_diary_status` 的返回里多一段 `coopanion`，报工作区、今天该在的路径、文件在不在
+- 文件在 → 读它当正文（**那是她自己写的**）
+- 文件不在 → DSH 按规程自己写一篇，**并在回执里说明「这篇是 DSH 代写、不是她的」**
+
+**注意 `.md` 不是 `.txt`**：她写的是 Markdown。默认模式就是 `.md`，
+要是她的命名习惯不一样，改 `diaryNameFormat` 就行（`{yyyymmdd}` 会替换成 `20261126` 这种）。
 
 **不用 Coopanion 也完全能用**：没有上游角色时本插件自己写正文（见技能文档第 2 节），
 只是日记的口气会变成 DSH 自己的（如果你养的是DSH里的大肥鱼则就是她），不再是「Coopanion大肥鱼在写」。
