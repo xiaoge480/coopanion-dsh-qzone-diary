@@ -24,11 +24,11 @@
   "author": "xiaoge480",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xiaoge480/dsh-qzone-diary.git"
+    "url": "git+https://github.com/xiaoge480/coopanion-dsh-qzone-diary.git"
   },
-  "homepage": "https://github.com/xiaoge480/dsh-qzone-diary#readme",
+  "homepage": "https://github.com/xiaoge480/coopanion-dsh-qzone-diary#readme",
   "bugs": {
-    "url": "https://github.com/xiaoge480/dsh-qzone-diary/issues"
+    "url": "https://github.com/xiaoge480/coopanion-dsh-qzone-diary/issues"
   },
   "engines": {
     "node": ">=20"

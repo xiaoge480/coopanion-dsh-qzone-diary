@@ -1,5 +1,11 @@
 # dsh-qzone-diary —— 借助 DSH 给 Coopanion大肥鱼 用的 QQ 空间日记发布器
 
+> **仓库名 vs 包名**
+>
+> 仓库叫 [`coopanion-dsh-qzone-diary`](https://github.com/xiaoge480/coopanion-dsh-qzone-diary)，
+> 但 **npm 包名还是 `dsh-qzone-diary`** —— 改包名要重装、还要改 `cordis.patch.yml` 里的引用，
+> 收益不大。所以下面所有 `dsh-qzone-diary` 指的是**包名 / 目录名**，仓库地址看链接。
+
 给 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（DSH）的宿主插件：把「每天
 20:30 在 QQ 空间发一篇带图日记」这件事，连评论检查一起，做成装完就能跑的一套东西。
 
